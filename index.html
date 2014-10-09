@@ -1,0 +1,301 @@
+<!DOCTYPE html> 
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1,  user-scalable=no,  height=device-height">
+<meta name="viewport" content="width=device-width">
+<title>Application veille academique</title>
+<link rel="stylesheet" type="text/css" href="jm/jquery.mobile.theme-1.4.2.min.css">
+<!-- <link rel="stylesheet" type="text/css" href="http://demos.jquerymobile.com/1.2.1/css/themes/default/jquery.mobile-1.2.1.css"> -->
+<link rel="stylesheet" type="text/css" href="jm/jquery.mobile-1.4.2.min.css">
+
+<link rel="stylesheet" type="text/css" href="css/mobilestyle.css">
+
+
+
+</head>
+
+<body>
+<div  id="mention_legal" data-theme="a">
+	<h4>Mention légale</h4><p>Ce site est édité par l'Agence universitaire de la Francophonie (AUF), personne morale constituée en vertu de la Loi concernant l'Agence universitaire de la Francophonie (Québec, chapitre A-7.2, entrée en vigueur le 1er novembre 2001). Le contenu du site Web de l’Agence universitaire de la Francophonie (AUF) est partagé à titre d’information générale uniquement. L’AUF et/ou ses représentants ne peuvent en aucun cas être tenus responsables relativement à quelque préjudice, inconvénient et/ou dommage lié directement ou indirectement à la lecture, à la consultation et/ou à l’utilisation du présent site Web et/ou de son contenu. L’AUF et/ou ses représentants ne peuvent en aucun cas être tenus responsables relativement au contenu des sites Web externes pour lesquels et vers lesquels elle offre des liens. Toute commercialisation, directe ou indirecte, de quelque texte contenu dans le présent site Web est strictement interdite. Le présent site Web, et son utilisation par toute personne sont soumis aux lois du Québec et du Canada. Pour tout litige, les juridictions compétentes sont celles de Montréal (Canada-Québec). Toute communication transmise à l'AUF par les visiteurs du présent site est traitée avec la plus stricte confidentialité.
+		<br>© AUF - Tous droits réservés.</p>
+	</div>	
+    
+     <div data-role="page" class="ui-page" data-add-back-btn="true" data-dom-cache="false" id="index" >
+		
+	<div id="apps-header" data-theme="a" data-role="header" class="header" data-position="fixed">  
+	<h1 class="entete"> Actualités</h1> 
+        <div class="recherche"><div class="input-text"> <input  name="searchinput1" id="searchinput1" placeholder="tapez votre recherche ici" value="" type="search" class="ui-input-text "  ></div>
+        <div class="div-button"> <button  onClick="rechercher()" style="background-color:#7bb43b;color:white;text-shadow: none;" class=" ui-btn ui-btn ui-shadow ui-corner-all ui-btn-icon-left ui-icon-search ui-btn-icon-notext">Rechercher</button></div> 		
+         </div>
+     </div>
+     
+     
+	<div role="main" data-theme="b" class="ui-content"  id="news">
+   
+    <div id="fade" class="black_overlay"></div>	
+  	
+ 
+        <ul data-role="listview" data-inset="true" class="listnews" id="listnews">
+        </ul>
+        <div align="center" id="loading" style="display:none;"><h3>Chargement...</h3><img src="jm/images/ajax-loader.gif"></div>
+    </div>
+	<div data-role="footer" data-theme="b" data-position="fixed" data-id="foot">
+    	
+    <div data-role="navbar" class="" data-grid="c">
+    <ul class="test1">
+        <li class="index"><a href="#index" class="ui-btn-active  ui-state-persist" data-icon="info">Actualités</a></li>
+        <li><a href="#systeme"   data-icon="arrow-u-r" >Syst. Aca</a></li>
+        <li><a href="#agenda" data-icon="calendar">Agenda</a></li>
+        <li><a href="#appel"  data-icon="user">Appel d'offre</a></li>
+       
+    </ul>
+    </div>
+</div>
+    
+    </div>
+    
+
+    
+<!--  AGENDA  -->    
+<div data-role="page" class="ui-page"  id="agenda" >
+	
+	<div id="headeragenda" data-theme="a" data-role="header" data-position="fixed">  <h1 class="entete">Agenda</h1>  </div>
+	<div role="main" class="ui-content" id="scrollagenda">
+    <!-- Debut content-->	
+         <ul data-role="listview" data-inset="true" class="listagenda" id="listagenda">
+        </ul>
+        <div align="center" id="loadingagenda" style="display:none;"><h3>Chargement...</h3><img src="jm/images/ajax-loader.gif"></div>
+    </div>
+<!-- fin conten-->
+        
+   
+<div data-role="footer" data-theme="b" data-position="fixed" data-id="foot">
+    	
+    <div data-role="navbar" class="" data-grid="c">
+    <ul class="test1">
+        <li  class="index"><a href="#index" data-ajax="false" data-icon="info">Actualités</a></li>
+        <li><a href="#systeme" data-icon="arrow-u-r" class="">Syst. Aca</a></li>
+        <li><a href="#"  class="ui-btn-active ui-state-persist" data-icon="calendar">Agenda</a></li>
+         <li><a href="#appel"   data-icon="user">Appel d'offre</a></li>
+       
+    </ul> 
+    </div>
+</div>
+    
+    </div>
+    
+    
+<!-- APPEL D'OFFRE -->    
+    
+    <div data-role="page" class="ui-page"  id="appel" >
+	
+	<div id="headerrepertoire" data-theme="a" data-role="header" data-position="fixed">
+	<h1 class="entete">Appel d'offre </h1> </div>
+	<div role="main" class="ui-content">
+    <!-- Debut content-->	
+ 
+         <ul data-role="listview" data-inset="true" class="listappel" id="listappel">
+	 
+        </ul>
+        <div align="center" id="loadingappel" style="display:none;"><h3>Chargement...</h3><img src="jm/images/ajax-loader.gif"></div>
+    </div>
+
+
+        
+   
+<div data-role="footer" data-theme="b" data-position="fixed" data-id="foot">
+    	
+    <div data-role="navbar" class="" data-grid="c">
+    <ul class="test1">
+        <li  class="index"><a href="#index"  data-icon="info">Actualités</a></li>
+        <li><a href="#systeme"   data-icon="arrow-u-r" class="">Syst. Aca</a></li>
+        <li><a href="#agenda"  data-icon="calendar">Agenda</a></li>
+         <li><a href="#"  class="ui-btn-active ui-state-persist" data-icon="user">Appel d'offre</a></li>
+       
+    </ul>
+    </div>
+</div>
+    
+    </div>
+    
+<!-- Page d'affichage quand user clicque sur 1 lien  -->    
+    <div data-role="page" class="" data-add-back-btn="true"  id="details" >
+	
+	<div id="headerdetails" data-theme="a" data-role="header" data-position="fixed">  <h1 class="entete"> Site web </h1><a id="btn-back" data-role="button" data-rel="back" data-transition="slide" data-icon="arrow-l" data-iconpos="left" class="ui-btn-left ui-btn ui-icon-arrow-l  ui-corner-all ui-btn-icon-notext"  > Retour </a>  </div>
+	<div role="main" class="ui-content"  id="contenusite">
+    	<IFRAME id="frameId" src="" width="550px"  scrolling=auto frameborder=1 > </IFRAME>
+    </div>
+	<div data-role="footer" data-theme="b" data-position="fixed" data-id="foot">
+    	
+    <div data-role="navbar" class="nav-glyphish-example" data-grid="c">
+    <ul class="test1">
+        <li  class="index"><a href="#index" class="" data-ajax="false" data-icon="info">Actualités</a></li>
+        <li><a href="#systeme"  data-icon="arrow-u-r" >Syst. Aca</a></li>
+        <li><a href="#agenda"  data-icon="calendar">Agenda</a></li>
+        <li><a href="#appel"  data-icon="user">Appel d'offre</a></li>
+       
+    </ul>
+    </div>
+</div>
+    
+    </div>
+    
+    
+    
+<!--  SYSTEME ACADEMIQUE -->
+    
+  <div data-role="page" class="ui-page" id="systeme" data-dom-cache="true" >
+	
+	<div id="headersystemevietnam" data-theme="a" data-role="header" data-position="fixed">
+	<h1 class="entete"> Système académique </h1>
+    	<div data-role="navbar" class="" data-grid="c" data-theme="a" >
+        <ul class="test1">
+            <li ><a href="#systeme" class="ui-btn-active  ui-state-persist">Vietnam</a></li>
+            <li><a href="#systeme_cambodge"   >Cambodge</a></li>
+            <li><a href="#systeme_laos" >Laos</a></li>
+            <li><a href="#systeme_vanuatu" >Vanuatu</a></li>
+           
+        </ul>
+    </div>
+     </div>
+	<div role="main" class="ui-content" id="systeme_contenu_vietnam">
+    <!-- Debut content-->	
+     <h1 class="entete">  Vietnam</h1>
+
+ 
+	</div><!-- fin conten-->
+        
+   
+	<div data-role="footer" data-theme="b" data-position="fixed" data-id="foot">
+    	
+    <div data-role="navbar" class="" data-grid="c">
+    <ul class="test1">
+        <li  class="index"><a href="#index" data-ajax="false" data-icon="info">Actualités</a></li>
+        <li><a href="#" data-icon="arrow-u-r"   class="ui-btn-active ui-state-persist">Syst. Aca</a></li>
+        <li><a href="#agenda"   data-icon="calendar">Agenda</a></li>
+         <li><a href="#appel"   data-icon="user">Appel d'offre</a></li>
+       
+    </ul>
+    </div>
+</div>
+    
+    </div> 
+    <div data-role="page" class="ui-page" id="systeme_cambodge" data-dom-cache="true" >
+	
+	<div id="headersystemecambodge" data-theme="a" data-role="header" data-position="fixed">
+	<h1 class="entete"> Système académique </h1>
+    	<div data-role="navbar" class="" data-grid="c" data-theme="a" >
+        <ul class="test1">
+            <li><a href="#systeme"  >Vietnam</a></li>
+            <li><a href="#systeme_cambodge"  class="ui-btn-active  ui-state-persist" >Cambodge</a></li>
+            <li><a href="#systeme_laos" >Laos</a></li>
+            <li><a href="#systeme_vanuatu"  >Vanuatu</a></li>
+           
+        </ul>
+    </div>
+     </div>
+	<div role="main" class="ui-content" id="systeme_contenu_cambodge">
+    <!-- Debut content-->	
+     <h1 class="entete"> Cambodge</h1>
+
+ 
+	</div><!-- fin conten-->
+        
+   
+	<div data-role="footer" data-theme="b" data-position="fixed" data-id="foot">
+    	
+    <div data-role="navbar" class="" data-grid="c">
+    <ul class="test1">
+        <li  class="index"><a href="#index" data-ajax="false" data-icon="info">Actualités</a></li>
+        <li><a href="#" data-icon="arrow-u-r"   class="ui-btn-active ui-state-persist">Syst. Aca</a></li>
+        <li><a href="#agenda"   data-icon="calendar">Agenda</a></li>
+         <li><a href="#appel"   data-icon="user">Appel d'offre</a></li>
+       
+    </ul>
+    </div>
+</div>
+    
+    </div>  
+     <div data-role="page" class="ui-page" id="systeme_laos" data-dom-cache="true">
+	
+	<div id="headersystemelaos" data-theme="a" data-role="header" data-position="fixed">  <h1 class="entete"> Système académique </h1>
+    	<div data-role="navbar" class="" data-grid="c" data-theme="a" >
+        <ul class="test1">
+            <li><a href="#systeme"  >Vietnam</a></li>
+            <li><a href="#systeme_cambodge"   >Cambodge</a></li>
+            <li><a href="#systeme_laos" class="ui-btn-active  ui-state-persist" >Laos</a></li>
+            <li><a href="#systeme_vanuatu"  >Vanuatu</a></li>
+           
+        </ul>
+    </div>
+     </div>
+	<div role="main" class="ui-content" id="systeme_contenu_laos">
+    <!-- Debut content-->	
+     <h1 class="entete">  Laos</h1>
+
+ 
+	</div><!-- fin conten-->
+        
+   
+	<div data-role="footer" data-theme="b" data-position="fixed" data-id="foot">
+    	
+    <div data-role="navbar" class="" data-grid="c">
+    <ul class="test1">
+        <li  class="index"><a href="#index" data-ajax="false" data-icon="info">Actualités</a></li>
+        <li><a href="#" data-icon="arrow-u-r"   class="ui-btn-active ui-state-persist">Syst. Aca</a></li>
+        <li><a href="#agenda"   data-icon="calendar">Agenda</a></li>
+         <li><a href="#appel"   data-icon="user">Appel d'offre</a></li>
+       
+    </ul>
+    </div>
+</div>
+    
+    </div>  
+    <div data-role="page" class="ui-page" id="systeme_vanuatu" data-dom-cache="true">
+	
+	<div id="headersystemevanuatu" data-theme="a" data-role="header" data-position="fixed">  <h1 class="entete"> Système académique </h1>
+    	<div data-role="navbar" class="" data-grid="c" data-theme="a" >
+        <ul class="test1">
+            <li><a href="#systeme"  >Vietnam</a></li>
+            <li><a href="#systeme_cambodge"   >Cambodge</a></li>
+            <li><a href="#systeme_laos" >Laos</a></li>
+            <li><a href="#systeme_vanuatu"  class="ui-btn-active  ui-state-persist" >Vanuatu</a></li>
+           
+        </ul>
+    </div>
+     </div>
+	<div role="main" class="ui-content" id="systeme_contenu_vanuatu">
+    <!-- Debut content-->	
+     <h1 class="entete">  Vanuatu</h1>
+
+ 
+	</div><!-- fin conten-->
+        
+   
+	<div data-role="footer" data-theme="b" data-position="fixed" data-id="foot">
+    	
+    <div data-role="navbar" class="" data-grid="c">
+    <ul class="test1">
+        <li  class="index"><a href="#index" data-ajax="false" data-icon="info">Actualités</a></li>
+        <li><a href="#" data-icon="arrow-u-r"   class="ui-btn-active ui-state-persist">Syst. Aca</a></li>
+        <li><a href="#agenda"   data-icon="calendar">Agenda</a></li>
+         <li><a href="#appel"   data-icon="user">Appel d'offre</a></li>
+       
+    </ul>
+    </div>
+</div>
+    
+    </div> 
+<script src="jm/jquery-1.8.0.min.js"></script>
+<script src="jm/jquery.mobile-1.4.2.min.js"></script>
+<script src="jm/function.js"></script>
+<script language="javascript">
+$.mobile.page.prototype.options.addBackBtn = "True";
+$.mobile.page.prototype.options.backBtnText = "Retour";
+$.mobile.transitionFallbacks.slideout = "none";
+$.mobile.defaultPageTransition ="none";
+
+</script>	
+</body>
+</html>

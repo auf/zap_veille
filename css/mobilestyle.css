@@ -1,0 +1,295 @@
+fieldset{
+ 
+}
+
+.ios-detected  {
+height:25px;
+display:block;
+}
+
+
+
+.ios-detected .ui-header .ui-btn {
+top:30px !important;
+position: relative !important;
+}
+
+
+#header {
+	position:fixed;
+	top:60; width:100%;height:40px;
+}
+
+.logo {
+	background:#ababab url(../images/mbbg-head.png)no-repeat right top;
+	height:40px;
+	background-position: 88% ; 
+	
+}
+.ui-page > h1,.ui-page h1.entete{
+	
+	padding:6px; white-space:normal;
+	margin: 0px;
+}
+input {
+    display : inline-block;
+    width   : 80%;
+    vertical-align : middle;
+}
+#searchinput1 {
+    display : inline-block;
+    width   : 80%;
+    vertical-align : middle;
+}
+#mention_legal p{font-size:10px; text-align:justify;}
+fieldset >.ui-input-text {
+    display : inline-block;
+    width   : 80%;
+    vertical-align : middle;
+}
+fieldset > .ui-btn {
+    display : inline-block;
+    width   : 10%;
+    vertical-align : middle;
+}
+.pour_grand_ecran{
+	display:none;
+}
+
+button{
+text-shadow: none;
+}
+div.main a{
+	color: #ffffff;
+	} 
+strong{
+	color:#0E96EF;
+}
+.details-infos{
+	
+}
+.titre{
+	color:#017EA1;
+	text-align:justify
+}
+.news{
+	height:120px;
+}
+ul.listnews {
+	-webkit-overflow-scrolling:touch;
+	padding:0px;
+	overflow:auto;
+	
+	
+}
+ul.listnews li{
+	height:80px;
+	list-style:none;
+	white-space:normal;
+		
+}
+
+ul.listnews li:nth-child(2n+1){
+	background-color:#eaeae9;	
+		
+}
+ul.listnews li:nth-child(2n+2){
+	background-color:#eaeae9;	
+		
+}
+ul.listnews li:nth-child(2n+1) a h2{
+	/*color:#03F;	
+	font-weight:bold;*/
+		
+}
+ul.listnews li a{
+	text-decoration:none;
+	font-weight:normal;
+	
+	
+}
+ul.listnews li a img,ul.listnews li a div {
+	
+	width:80px;
+	height:80px;
+	float:left;
+	padding-right:5px;
+	
+}
+
+ul.listnews li a h2{
+	font-size:13px;
+	font-weight:bold;
+	padding-top:5px;
+	text-shadow: none;
+	color:#0093dd;
+	white-space:normal;
+	
+}
+ul.listnews li a p{
+	font-size:12px;
+	color:#565757;
+	
+	font-weight:normal;
+	font-family:"Arial";
+	text-shadow: none;
+	white-space:normal;
+	display:none;
+		
+}
+
+
+ul.listagenda li {
+	padding:3px;
+	margin:3px;
+}
+ul.listagenda li a p{
+	
+	list-style:none;
+	white-space:normal;	
+	font-size:12px;	
+	color:#000;
+	font-weight:normal;
+	font-family:"Times New Roman", Times, serif;
+	text-shadow: none;
+		
+}
+
+ul.listagenda  h2{
+	font-size:12px;
+	font-weight:bold;
+	padding-top:5px;
+	text-shadow: none;
+	white-space:normal;
+	color:#0093dd;
+}
+ul.listappel li {
+	padding:3px;
+	margin:3px;
+}
+ul.listappel li a p{
+	
+	list-style:none;
+	white-space:normal;
+	
+	font-size:12px;
+	color:#000000;
+	
+	font-weight:normal;
+	font-family:"Times New Roman", Times, serif;
+	text-shadow: none;
+		
+}
+
+ul.listappel  h2{
+	font-size:12px;
+	font-weight:bold;
+	padding-top:5px;
+	text-shadow: none;
+	white-space:normal;
+	color:#0093dd;
+}
+
+ul.listappel li a{
+	text-decoration:none;
+	font-weight:normal;
+	
+	
+}
+
+#loading h3{
+	color:#06F;
+	
+}
+.black_overlay{
+        display: none;
+        position: absolute;
+        top: 0%;
+        left: 0%;
+        width: 100%;
+        height: 100%;
+        background-color: black;
+        z-index:1001;
+        -moz-opacity: 0.8;
+        opacity:.80;
+        filter: alpha(opacity=80);
+    }
+    .white_content {
+        display: none;
+        position: absolute;
+        top: 10%;
+        
+        width: 90%;
+        color:white;
+       
+        background-color: black;
+        z-index:1002;
+        overflow: auto;
+    }
+.recherche{
+		display:block;
+		 width   : 100%;
+	
+	}
+	.recherche div{display:inline-block;}
+	.recherche .input-text{
+		 width   : 85%;
+		 height  : 20px;
+		 text-align:right;
+	}
+    #searchinput1 {
+       
+		 width   : 100%; 
+    }
+	.div-button{
+		 width   : 12%;
+	}
+    .recherche  .ui-btn {
+        
+		display:inline;
+    }
+ul.listnews li a h2.pour_grand_ecran{
+	display:none;
+}
+
+ul.listagenda li a h2.pour_grand_ecran{
+	display:none;
+}
+
+ul.listappel li a h2.pour_grand_ecran{
+	display:none;
+}
+
+@media all and (min-width:480px) {
+	ul.listnews li{
+	height:120px;
+	list-style:none;
+	white-space:normal;
+		
+}
+	ul.listnews li a img,ul.listnews li a div {
+	
+		width:120px;
+		height:120px;
+		float:left;
+		padding-right:10px;
+	
+	}
+	ul.listnews li a p{
+	font-size:12px;
+	color:#565757;	
+	font-weight:normal;
+	font-family:"Times New Roman", Times, serif;
+	text-shadow: none;
+	white-space:normal;
+	display:block;
+		
+}
+
+ul.listnews li a h2{
+	display:none;
+}
+ul.listnews li a h2.pour_grand_ecran{
+	display:block;
+}
+}
