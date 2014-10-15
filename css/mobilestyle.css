@@ -7,6 +7,18 @@ height:25px;
 display:block;
 }
 
+.scroll-wrapper {
+       -webkit-overflow-scrolling: touch !important;
+       overflow-y: scroll !important;
+ 
+       /* important:  dimensions or positioning here! */
+}
+
+.scroll-wrapper  iframe {
+   height: 100%;
+   width: 100%;
+}
+
 
 
 .ios-detected .ui-header .ui-btn {
