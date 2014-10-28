@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+﻿<!DOCTYPE html> 
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -16,11 +16,22 @@
 </head>
 
 <body>
-<div  id="mention_legal" data-theme="a">
-	<h4>Mention légale</h4><p>Ce site est édité par l'Agence universitaire de la Francophonie (AUF), personne morale constituée en vertu de la Loi concernant l'Agence universitaire de la Francophonie (Québec, chapitre A-7.2, entrée en vigueur le 1er novembre 2001). Le contenu du site Web de l’Agence universitaire de la Francophonie (AUF) est partagé à titre d’information générale uniquement. L’AUF et/ou ses représentants ne peuvent en aucun cas être tenus responsables relativement à quelque préjudice, inconvénient et/ou dommage lié directement ou indirectement à la lecture, à la consultation et/ou à l’utilisation du présent site Web et/ou de son contenu. L’AUF et/ou ses représentants ne peuvent en aucun cas être tenus responsables relativement au contenu des sites Web externes pour lesquels et vers lesquels elle offre des liens. Toute commercialisation, directe ou indirecte, de quelque texte contenu dans le présent site Web est strictement interdite. Le présent site Web, et son utilisation par toute personne sont soumis aux lois du Québec et du Canada. Pour tout litige, les juridictions compétentes sont celles de Montréal (Canada-Québec). Toute communication transmise à l'AUF par les visiteurs du présent site est traitée avec la plus stricte confidentialité.
+<div  id="mention_legal1" data-theme="a" data-role="popup">
+	<h4>Mention légale</h4>
+	<p>Ce site est édité par l'Agence universitaire de la Francophonie (AUF), personne morale constituée en vertu de la Loi concernant l'Agence universitaire de la Francophonie (Québec, chapitre A-7.2, entrée en vigueur le 1er novembre 2001). Le contenu du site Web de l’Agence universitaire de la Francophonie (AUF) est partagé à titre d’information générale uniquement. L’AUF et/ou ses représentants ne peuvent en aucun cas être tenus responsables relativement à quelque préjudice, inconvénient et/ou dommage lié directement ou indirectement à la lecture, à la consultation et/ou à l’utilisation du présent site Web et/ou de son contenu. L’AUF et/ou ses représentants ne peuvent en aucun cas être tenus responsables relativement au contenu des sites Web externes pour lesquels et vers lesquels elle offre des liens. Toute commercialisation, directe ou indirecte, de quelque texte contenu dans le présent site Web est strictement interdite. Le présent site Web, et son utilisation par toute personne sont soumis aux lois du Québec et du Canada. Pour tout litige, les juridictions compétentes sont celles de Montréal (Canada-Québec). Toute communication transmise à l'AUF par les visiteurs du présent site est traitée avec la plus stricte confidentialité.
 		<br>© AUF - Tous droits réservés.</p>
 	</div>	
-    
+    <div data-role="popup" id="menuapp" data-theme="b">
+        <ul data-role="listview" data-inset="true" style="min-width:215px;">
+            <li data-role="list-divider">Menu</li>
+            <li class=""><a href="#index" data-icon="info">Actualités</a></li>
+			<li><a href="#systeme"   data-icon="arrow-u-r" >Système. Académique</a></li>
+			<li><a href="#agenda" data-icon="calendar">Agenda</a></li>
+			<li><a href="#appel"  data-icon="user">Appel d'offre</a></li>
+			<li><a href="#dossier_thematique"  data-icon="user">Dossier thématique</a></li>
+			<li><a href="#mention_legal"  data-icon="user">Mention légale</a></li>
+        </ul>
+</div>
      <div data-role="page" class="ui-page" data-add-back-btn="true" data-dom-cache="false" id="index" >
 		
 	<div id="apps-header" data-theme="a" data-role="header" class="header" data-position="fixed">  
@@ -42,15 +53,7 @@
     </div>
 	<div data-role="footer" data-theme="b" data-position="fixed" data-id="foot">
     	
-    <div data-role="navbar" class="" data-grid="c">
-    <ul class="test1">
-        <li class="index"><a href="#index" class="ui-btn-active  ui-state-persist" data-icon="info">Actualités</a></li>
-        <li><a href="#systeme"   data-icon="arrow-u-r" >Syst. Aca</a></li>
-        <li><a href="#agenda" data-icon="calendar">Agenda</a></li>
-        <li><a href="#appel"  data-icon="user">Appel d'offre</a></li>
-       
-    </ul>
-    </div>
+    
 </div>
     
     </div>
@@ -72,19 +75,29 @@
    
 <div data-role="footer" data-theme="b" data-position="fixed" data-id="foot">
     	
-    <div data-role="navbar" class="" data-grid="c">
-    <ul class="test1">
-        <li  class="index"><a href="#index" data-ajax="false" data-icon="info">Actualités</a></li>
-        <li><a href="#systeme" data-icon="arrow-u-r" class="">Syst. Aca</a></li>
-        <li><a href="#"  class="ui-btn-active ui-state-persist" data-icon="calendar">Agenda</a></li>
-         <li><a href="#appel"   data-icon="user">Appel d'offre</a></li>
-       
-    </ul> 
-    </div>
+   
 </div>
     
     </div>
+<!--  Mention Légal  -->  	
+ <div data-role="page" class="ui-page"  id="mention_legal" >
+	
+	<div id="headeragenda" data-theme="a" data-role="header" data-position="fixed">  <h1 class="entete">Mention légale</h1>  </div>
+	<!-- Debut content-->	
+	<div role="main" class="ui-content" id="">
     
+        <p>Ce site est édité par l'Agence universitaire de la Francophonie (AUF), personne morale constituée en vertu de la Loi concernant l'Agence universitaire de la Francophonie (Québec, chapitre A-7.2, entrée en vigueur le 1er novembre 2001). Le contenu du site Web de l’Agence universitaire de la Francophonie (AUF) est partagé à titre d’information générale uniquement. L’AUF et/ou ses représentants ne peuvent en aucun cas être tenus responsables relativement à quelque préjudice, inconvénient et/ou dommage lié directement ou indirectement à la lecture, à la consultation et/ou à l’utilisation du présent site Web et/ou de son contenu. L’AUF et/ou ses représentants ne peuvent en aucun cas être tenus responsables relativement au contenu des sites Web externes pour lesquels et vers lesquels elle offre des liens. Toute commercialisation, directe ou indirecte, de quelque texte contenu dans le présent site Web est strictement interdite. Le présent site Web, et son utilisation par toute personne sont soumis aux lois du Québec et du Canada. Pour tout litige, les juridictions compétentes sont celles de Montréal (Canada-Québec). Toute communication transmise à l'AUF par les visiteurs du présent site est traitée avec la plus stricte confidentialité.
+		<br>© AUF - Tous droits réservés.</p> 
+    </div>
+<!-- fin conten-->
+        
+   
+<div data-role="footer" data-theme="b" data-position="fixed" data-id="foot">
+    	
+   
+</div>
+    
+    </div>   
     
 <!-- APPEL D'OFFRE -->    
     
@@ -106,15 +119,7 @@
    
 <div data-role="footer" data-theme="b" data-position="fixed" data-id="foot">
     	
-    <div data-role="navbar" class="" data-grid="c">
-    <ul class="test1">
-        <li  class="index"><a href="#index"  data-icon="info">Actualités</a></li>
-        <li><a href="#systeme"   data-icon="arrow-u-r" class="">Syst. Aca</a></li>
-        <li><a href="#agenda"  data-icon="calendar">Agenda</a></li>
-         <li><a href="#"  class="ui-btn-active ui-state-persist" data-icon="user">Appel d'offre</a></li>
-       
-    </ul>
-    </div>
+  
 </div>
     
     </div>
@@ -128,15 +133,7 @@
     </div>
 	<div data-role="footer" data-theme="b" data-position="fixed" data-id="foot">
     	
-    <div data-role="navbar" class="nav-glyphish-example" data-grid="c">
-    <ul class="test1">
-        <li  class="index"><a href="#index" class="" data-ajax="false" data-icon="info">Actualités</a></li>
-        <li><a href="#systeme"  data-icon="arrow-u-r" >Syst. Aca</a></li>
-        <li><a href="#agenda"  data-icon="calendar">Agenda</a></li>
-        <li><a href="#appel"  data-icon="user">Appel d'offre</a></li>
-       
-    </ul>
-    </div>
+   
 </div>
     
     </div>
@@ -161,23 +158,22 @@
      </div>
 	<div role="main" class="ui-content" id="systeme_contenu_vietnam">
     <!-- Debut content-->	
-     <h1 class="entete">  Vietnam</h1>
 
+	<div data-role="collapsibleset" data-theme="a" data-inset="false">
+    <div data-role="collapsible">
+    <h6 id="titrepdf">Pièces jointes associées</h6>
+        <ul data-role="listview"  id="listpdfvietnam" class="listpdf">
+          
+        </ul>
+    </div>
+	</div>
  
 	</div><!-- fin conten-->
         
    
 	<div data-role="footer" data-theme="b" data-position="fixed" data-id="foot">
     	
-    <div data-role="navbar" class="" data-grid="c">
-    <ul class="test1">
-        <li  class="index"><a href="#index" data-ajax="false" data-icon="info">Actualités</a></li>
-        <li><a href="#" data-icon="arrow-u-r"   class="ui-btn-active ui-state-persist">Syst. Aca</a></li>
-        <li><a href="#agenda"   data-icon="calendar">Agenda</a></li>
-         <li><a href="#appel"   data-icon="user">Appel d'offre</a></li>
-       
-    </ul>
-    </div>
+   
 </div>
     
     </div> 
@@ -197,23 +193,22 @@
      </div>
 	<div role="main" class="ui-content" id="systeme_contenu_cambodge">
     <!-- Debut content-->	
-     <h1 class="entete"> Cambodge</h1>
-
+    
+	<div data-role="collapsibleset" data-theme="a" data-inset="false">
+    <div data-role="collapsible">
+    <h6 id="titrepdf">Pièces jointes associées</h6>
+        <ul data-role="listview"  id="listpdfcambodge" class="listpdf">
+          
+        </ul>
+    </div>
+	</div>
  
 	</div><!-- fin conten-->
         
    
 	<div data-role="footer" data-theme="b" data-position="fixed" data-id="foot">
     	
-    <div data-role="navbar" class="" data-grid="c">
-    <ul class="test1">
-        <li  class="index"><a href="#index" data-ajax="false" data-icon="info">Actualités</a></li>
-        <li><a href="#" data-icon="arrow-u-r"   class="ui-btn-active ui-state-persist">Syst. Aca</a></li>
-        <li><a href="#agenda"   data-icon="calendar">Agenda</a></li>
-         <li><a href="#appel"   data-icon="user">Appel d'offre</a></li>
-       
-    </ul>
-    </div>
+    
 </div>
     
     </div>  
@@ -232,23 +227,22 @@
      </div>
 	<div role="main" class="ui-content" id="systeme_contenu_laos">
     <!-- Debut content-->	
-     <h1 class="entete">  Laos</h1>
-
+     
+	<div data-role="collapsibleset" data-theme="a" data-inset="false">
+    <div data-role="collapsible">
+    <h6 id="titrepdf">Pièces jointes associées</h6>
+        <ul data-role="listview"  id="listpdflaos" class="listpdf">
+          
+        </ul>
+    </div>
+	</div>
  
 	</div><!-- fin conten-->
         
    
 	<div data-role="footer" data-theme="b" data-position="fixed" data-id="foot">
     	
-    <div data-role="navbar" class="" data-grid="c">
-    <ul class="test1">
-        <li  class="index"><a href="#index" data-ajax="false" data-icon="info">Actualités</a></li>
-        <li><a href="#" data-icon="arrow-u-r"   class="ui-btn-active ui-state-persist">Syst. Aca</a></li>
-        <li><a href="#agenda"   data-icon="calendar">Agenda</a></li>
-         <li><a href="#appel"   data-icon="user">Appel d'offre</a></li>
-       
-    </ul>
-    </div>
+    
 </div>
     
     </div>  
@@ -267,26 +261,106 @@
      </div>
 	<div role="main" class="ui-content" id="systeme_contenu_vanuatu">
     <!-- Debut content-->	
-     <h1 class="entete">  Vanuatu</h1>
-
+     
+	<div data-role="collapsibleset" data-theme="a" data-inset="false">
+    <div data-role="collapsible">
+    <h6 id="titrepdf">Pièces jointes associées</h6>
+        <ul data-role="listview"  id="listpdfvanuatu" class="listpdf">
+          
+        </ul>
+    </div>
+	</div>
  
 	</div><!-- fin conten-->
         
    
 	<div data-role="footer" data-theme="b" data-position="fixed" data-id="foot">
     	
-    <div data-role="navbar" class="" data-grid="c">
-    <ul class="test1">
-        <li  class="index"><a href="#index" data-ajax="false" data-icon="info">Actualités</a></li>
-        <li><a href="#" data-icon="arrow-u-r"   class="ui-btn-active ui-state-persist">Syst. Aca</a></li>
-        <li><a href="#agenda"   data-icon="calendar">Agenda</a></li>
-         <li><a href="#appel"   data-icon="user">Appel d'offre</a></li>
-       
-    </ul>
-    </div>
+   
 </div>
     
     </div> 
+	<div data-role="page" class="ui-page" id="pdfview" data-dom-cache="false">
+	
+	<div id="headerpdf" data-theme="a" data-role="header" data-position="fixed">  <h1 class="entete"> Fichier pdf</h1><a id="btn-back" data-role="button" data-rel="back" data-transition="slide" data-icon="arrow-l" data-iconpos="left" class="ui-btn-left ui-btn ui-icon-arrow-l  ui-corner-all ui-btn-icon-notext"  > Retour </a>
+    
+     </div>
+	<div role="main" class="ui-content" id="pdf_contenu">
+		
+	</div> 	
+	<div data-role="footer" data-theme="b" data-position="fixed" data-id="foot">
+    	   
+</div>
+	 </div> 
+	 
+	 <div data-role="page" class="ui-page" id="liste_article_dossier" data-dom-cache="true">
+	
+	<div class="headerpage" id="headerarticle_dossier" data-theme="a" data-role="header" data-position="fixed">  <h1 class="entete"> Liste des Articles </h1>
+    	<a id="btn-back1" data-role="button" data-rel="back" data-transition="slide" data-icon="arrow-l" data-iconpos="left" class="ui-btn-left ui-btn ui-icon-arrow-l  ui-corner-all ui-btn-icon-notext"  > Retour </a>
+     </div>
+	<div role="main" class="ui-content" id="contenue_liste_article_dossier">
+    <!-- Debut content-->	
+    <ul data-role="listview" data-inset="true" class="" id="ul_liste_article_dossier">
+	 
+    </ul>
+    <div align="center" id="loadingdossier" style="display:none;"><h3>Chargement...</h3><img src="jm/images/ajax-loader.gif"></div>
+	
+ 
+	</div><!-- fin conten-->
+        
+   
+	<div data-role="footer" data-theme="b" data-position="fixed" data-id="foot">
+    	
+   
+</div>
+    
+    </div> 
+	 <div data-role="page" class="ui-page" id="details_article_dossier" data-dom-cache="true">
+	
+	<div  class="headerpage" id="header_details_article_dossier" data-theme="a" data-role="header" data-position="fixed">  <h1 class="entete"> Détails de l'article </h1>
+		<a id="btn-back2" data-role="button" data-rel="back" data-transition="slide" data-icon="arrow-l" data-iconpos="left" class="ui-btn-left ui-btn ui-icon-arrow-l  ui-corner-all ui-btn-icon-notext"  > Retour </a>	
+     </div>
+	<div role="main" class="ui-content" id="contenue_details_article_dossier">
+    <!-- Debut content-->	
+    
+	<div data-role="collapsibleset" data-theme="a" data-inset="false">
+    <div data-role="collapsible">
+    <h6 id="titrepdf">Pièces jointes associées</h6>
+        <ul data-role="listview"  id="listpdf_dossier" class="listpdf">
+          
+        </ul>
+    </div>
+	</div>
+	<div id="contenu_article_dossier"> </div>
+	</div><!-- fin conten-->
+        
+   
+	<div data-role="footer" data-theme="b" data-position="fixed" data-id="foot">
+    	
+   
+	</div>
+    
+    </div> 
+ <div data-role="page" class="ui-page"  id="dossier_thematique" >
+	
+	<div id="headerdossier" data-theme="a" data-role="header" data-position="fixed">
+	<h1 class="entete">Dossier thématique </h1> </div>
+	<div role="main" class="ui-content">
+    <!-- Debut content-->	
+ 
+         <ul data-role="listview" data-inset="true" class="" id="listdossier">
+	 
+        </ul>
+        
+    </div>
+
+	<div data-role="footer" data-theme="b" data-position="fixed" data-id="foot">
+			
+	  
+	</div>
+    
+    </div>
+	
 <script src="jm/jquery-1.8.0.min.js"></script>
 <script src="jm/jquery.mobile-1.4.2.min.js"></script>
 <script src="jm/function.js"></script>

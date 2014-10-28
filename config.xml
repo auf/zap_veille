@@ -14,8 +14,8 @@ L' « Espace veille académique » proposé par l'Agence universitaire de la Fra
 <author href="www.auf.org" email="gorbiromaric@gmail.com">
 Bureau Asie Pacifique de l'Agence Universitaire de la Francophonie
 </author>
-<icon src="icon2.png" />
-<icon src="icon2.png" gap:platform="android" gap:qualifier="ldpi" />
+<icon src="veille_logo.png" />
+<icon src="veille_logo.png" gap:platform="android" gap:qualifier="ldpi" />
 <gap:splash src="demarrage_portrait.png" />
 <gap:splash src="demarrage_portrait.png" gap:platform="android" gap:qualifier="port-xxhdpi" />
 <gap:splash src="demarrage_paysage.png" gap:platform="android" gap:qualifier="land-xxhdpi" />

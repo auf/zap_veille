@@ -4,8 +4,10 @@ $(function() {
     $(this)
     $(this).replaceWith('<h2><a href="'+$(this).attr('href')+'">'+$(this).text()+'</a></h2><iframe src="http://docs.google.com/viewer?url='+$(this).attr('href')+'&#038;embedded=true" width="500" height="250" style="border: none;"></iframe>');
 });*/
-	 $( "#mention_legal" ).enhanceWithin().popup();
+	$( "#menuapp" ).enhanceWithin().popup();
+	
 	racine ="http://www.veille.univ-ap.info/media/";
+	racineSiteWeb = "http://www.veille.univ-ap.info/";
 	
 	if(typeof(Storage) !== "undefined") {
    		 if(typeof(sessionStorage.recherche) == "undefined"){
@@ -21,9 +23,12 @@ $(function() {
 		 	sessionStorage.urlagenda = "http://www.veille.univ-ap.info/news/api/?categorie=5&page=1&statut=Publié&ordering=-date_debut";
 		 }
 		 
-		 if(typeof(sessionStorage.urlappel) == "undefined" || (sessionStorage.urlappel == 'null') ){
+		if(typeof(sessionStorage.urlappel) == "undefined" || (sessionStorage.urlappel == 'null') ){
 		 	sessionStorage.urlappel = "http://www.veille.univ-ap.info/news/api/?categorie=6&page=1&statut=Publié&ordering=-date_fin";
-		 }	
+		 }
+		 /*if(typeof(sessionStorage.urldossier) == "undefined" || (sessionStorage.urldossier == 'null') ){
+		 	sessionStorage.urldossier = "http://www.veille.univ-ap.info/news/api/?categorie=7&page=1&statut=Publié&ordering=-date_fin";
+		 }	*/
 	 
 	 
 		 
@@ -36,10 +41,13 @@ $(function() {
 	}
 	// code insertion entete, bouton légale et logo
 	if (navigator.appVersion.indexOf("Mac OS")!=-1){
-		$('[data-role="header"]').prepend('<div style="background-color: #ababab;top:0px;" id="transparent_header" class="ios-detected">   &nbsp;</div>	<a href="#mention_legal" data-icon="grid" data-rel="popup" class="ui-btn-right ui-btn ui-icon-grid  ui-corner-all ui-btn-icon-notext" data-iconpos="right" data-transition="pop" style="position:absolute;top:30px"></a><div id=""><div class="logo"><img src="images/logo.png" />	</div></div> ');	
+		$('.headerpage').find('a').remove();
+		$('[data-role="header"]').prepend('<div style="background-color: #ababab;top:0px;" id="transparent_header" class="ios-detected">   &nbsp;</div>	<a href="#menuapp" data-icon="grid" data-rel="popup" class="ui-btn-right ui-btn ui-icon-grid  ui-corner-all ui-btn-icon-notext" data-iconpos="right" data-transition="pop" style="position:absolute;top:30px"></a><div id=""><div class="logo"><img src="images/logo.png" />	</div></div> ');			
+		$('.headerpage').append('<a style="position:absolute;top:30px" id="btn-back" data-role="button" data-rel="back" data-transition="slide" data-icon="arrow-l" data-iconpos="left" class="ui-btn-left ui-btn ui-icon-arrow-l  ui-corner-all ui-btn-icon-notext"  > Retour </a>');
 	}else{
-		$('[data-role="header"]').prepend('<a href="#mention_legal" data-icon="grid" data-rel="popup" class="ui-btn-right ui-btn ui-icon-grid  ui-corner-all ui-btn-icon-notext" data-iconpos="right" data-transition="pop"></a><div id=""><div class="logo"><img src="images/logo.png" />	</div></div> ');
+		$('[data-role="header"]').prepend('<a href="#menuapp" data-icon="grid" style="margin-right:10px;" data-rel="popup" class="ui-btn-right ui-btn ui-icon-grid  ui-corner-all ui-btn-icon-notext" data-iconpos="right" data-transition="pop" ></a><div id=""><div class="logo"><img src="images/logo.png" />	</div></div> ');
 	}
+	
 	
 	// code insertion popup
 	//$('[data-role="page"]').prepend(legal).page();
@@ -51,7 +59,7 @@ $(function() {
 			if ( $(window).scrollTop() + $(window).height() > $('#agenda').height() - 180 && !isLoading) {
 			   //alert("go 11");
 			   if(sessionStorage.urlagenda!='null'){
-				ajaxNews(5); //get Agenda
+				ajaxNews(5,0); //get Agenda
 			   }else{
 				//$('#loadingagenda').html('<h2 >Aucune données à télécharger</h2>');
 			   }
@@ -62,7 +70,7 @@ $(function() {
 			if ($(window).scrollTop() + $(window).height() > $('#appel').height() - 180 && !isLoading) {
 				//alert("go 11");
 			   if(sessionStorage.urlappel!='null'){
-				ajaxNews(6); //get Appel
+				ajaxNews(6,0); //get Appel
 			   }else{
 				//$('#loadingappel').html('<h2 >Aucune données à télécharger</h2>');
 			   }
@@ -74,7 +82,7 @@ $(function() {
 			  	sessionStorage.recherche = false;
 				
 			   if(sessionStorage.urlnews!='null'){
-				ajaxNews(2); //get News
+				ajaxNews(2,0); //get News
 			   }else{
 				   
 				//$('#loading').html('<h2 >Aucune données à télécharger</h2>');
@@ -91,12 +99,31 @@ $(function() {
 	
 	
 	isLoading = false;
-	//ajaxInit(2);
-	ajaxNews(2);	ajaxNews(5);	ajaxNews(6);
+	
+	ajaxNews(2,0);
+	ajaxNews(5,0);
+	ajaxNews(6,0);
+	dossier_thematique();
 	ajaxSA();
 	
-	
-   $(document).on('tap','#listnews li ', function () {
+	 $(document).on('tap','.listpdf li', function () {
+        
+		pdf = $(this).attr('data-title')+'&embedded=true';
+		
+		frame ='<div class="scroll-wrapper"><IFRAME id="framepdf" src="http://docs.google.com/gview?url='+pdf+'" width="100%"  scrolling=auto frameborder=0 > </IFRAME></div>';
+		theframe = $(frame);
+		//theframe.appendTo($("#contenusite"));		
+		//alert(theframe);
+		$("#pdf_contenu").html(theframe);
+		$.mobile.initializePage();		
+		$.mobile.changePage('#pdfview', "slide", true, true);
+		$("#framepdf").load(function() {
+			$(this).height( viewport.height );
+		});
+		$('body').find('#pdfview').page();
+				
+    });  
+   $(document).on('tap','#listnews li', function () {
            
 		siteweb = $(this).attr('data-title');
 		var frame ='<div class="scroll-wrapper"><IFRAME id="frameId" src="'+siteweb+'" width="100%"  scrolling=auto frameborder=1 > </IFRAME></div>';
@@ -129,6 +156,7 @@ $(function() {
 						
     });   
     
+	
     $(document).on('tap','#listappel li ', function () {
            
 		siteweb = $(this).attr('data-title');
@@ -143,6 +171,19 @@ $(function() {
 		});
 		$('body').find('#details').page();
 						
+    });
+	$(document).on('tap','#listdossier li ', function () {
+       
+		$('#liste_article_dossier').find('h1').html($(this).find('a').html());   
+		ajaxNews(7,$(this).attr('data-title')); 
+		
+						
+    }); 
+	$(document).on('tap','#ul_liste_article_dossier li ', function () {
+        
+		$('#header_details_article_dossier').find('h1').html($(this).find('h2').html());      
+		load_article_thematique($(this).attr('data-title'));
+				
     });       
     
     /*
@@ -161,7 +202,7 @@ $(function() {
 
 function ajaxSA(){
 	
-	var url = 'http://www.veille.univ-ap.info/veille/api_sa/?format=jsonp';
+	var url = racineSiteWeb+'veille/api_sa/?format=jsonp';
 
 	 $.ajax({
 		type: 'GET',
@@ -179,10 +220,10 @@ function ajaxSA(){
 				
 				var resultat = '<div> '+data[i].contenu_mobile+'</div>';
 				data[i].pays = data[i].pays.replace(' ','').toLowerCase();
-				
-				$('#systeme_contenu_'+data[i].pays).html(resultat);
+				loadpdf(data[i].id, data[i].pays);
+				$('#systeme_contenu_'+data[i].pays).append(resultat);
 				$('body').find('#systeme_'+data[i].pays).page();
-			
+				
 				
 			}
 				
@@ -200,17 +241,22 @@ function ajaxSA(){
 		});
 }
 
-function ajaxInit(categorieID){
-	
+
+
+function ajaxNews(categorieID,categorieDossier){
+	var root = "http://www.veille.univ-ap.info/news/";
 	isLoading = true;
 	//$("#loading").show();
 	// url = urlnews+'&format=jsonp';	
-	var url = sessionStorage.urlnews;
-	url = "";
+	
+	//sessionStorage.urlnews = 'null';
+	
+	
+	
 	if (categorieID==2){  //news	
 		$("#loading").show();
 		if((sessionStorage.urlnews =='null')){
-			sessionStorage.urlnews = "http://www.veille.univ-ap.info/news/api/?ordering=-date_debut&statut=Publié&categorie=" + categorieID + "&page=1"; 
+			sessionStorage.urlnews = root+ "api/?ordering=-date_debut&statut=Publié&categorie=" + categorieID + "&page=1"; 
 		}
 		url = sessionStorage.urlnews;
 	}
@@ -218,7 +264,7 @@ function ajaxInit(categorieID){
 	if (categorieID==5){
 		$("#loadingagenda").show();
 		if((sessionStorage.urlagenda =='null')){
-			sessionStorage.urlagenda = "http://www.veille.univ-ap.info/news/api/?ordering=-date_debut&statut=Publié&categorie=" + categorieID + "&page=1"; 
+			sessionStorage.urlagenda = root+"api/?ordering=-date_debut&statut=Publié&categorie=" + categorieID + "&page=1"; 
 		}
 		url = sessionStorage.urlagenda;
 	}
@@ -226,89 +272,16 @@ function ajaxInit(categorieID){
 	if (categorieID==6){
 		$("#loadingappel").show();
 		if((sessionStorage.urlappel =='null')){
-			sessionStorage.urlappel = "http://www.veille.univ-ap.info/news/api/?ordering=-date_fin&statut=Publié&categorie=" + categorieID + "&page=1"; 
+			sessionStorage.urlappel = root+ "api/?ordering=-date_fin&statut=Publié&categorie=" + categorieID + "&page=1"; 
 			
 		}
 		url = sessionStorage.urlappel;
 	}
-	
-	var isRecherche = sessionStorage.recherche;
-	var resultat = '';
-	
-	 $.getJSON(url, function(datas){
-	 	var data =  datas.results;
-		for(i=0;i<data.length;i++ ){
-			extrait = data[i].extrait_contenu.split(' ',20);
-			extrait = extrait.join(' ');
-			titre = data[i].titre.split(' ',20);
-			titre = titre.join(' ');
-			
-			if (categorieID==2){ //actulites
-				if(data[i].images!=''){var img = '<img src="'+racine+data[i].images+'">';}else{var img ='<div > &nbsp;</div>';}
-				resultat+= '<li data-title="'+data[i].lien_vers_site+'"><a href="#"   data-ajax="false">'+img+' <h2>'+titre+'</h2><h2 class="pour_grand_ecran">'+data[i].titre+'</h2><p >'+extrait+'</p></a> </li>';
-
-			}else if (categorieID==5){ //Agenda
-				resultat+= '<li data-title="'+data[i].lien_vers_site+'"><a href="#"   data-ajax="false">'+' <h2>'+titre+'</h2><h2 class="pour_grand_ecran">'+data[i].titre+'</h2><p >'+data[i].date_debut.substring(8,10)+ '-' +data[i].date_debut.substring(5,7)+ '-' + +data[i].date_debut.substring(0,4)+ '</p></a> </li>';
-
-			}else if (categorieID==6){ //Appel d'offre
-				resultat+= '<li data-title="'+data[i].lien_vers_site+'"><a href="#"   data-ajax="false">'+' <h2>'+titre+'</h2><h2 class="pour_grand_ecran">'+data[i].titre+'</h2><p >Date limite : '+data[i].date_fin.substring(8,10)+ '-' +data[i].date_fin.substring(5,7)+ '-' + +data[i].date_fin.substring(0,4)+ '</p></a> </li>';
-			}
-	
-		}
+	if (categorieID==7){
+		//$("#loadingappel").show();
 		
-		
-		 	// $("#listnews").append(resultat).addClass('listnews');
-			if (categorieID==2){
-				$("#listnews").append(resultat).listview();
-				$("#loading").hide();
-				sessionStorage.urlnews =  datas.next;
-				ajaxInit(5);
-			}else if (categorieID==5){
-				$("#listagenda").append(resultat).listview();
-				$("#loadingagenda").hide();
-				sessionStorage.urlagenda =  datas.next;
-				ajaxInit(6);				
-			}else if (categorieID==6){
-
-				$("#listappel").append(resultat).listview();
-				$("#loadingappel").hide();
-				sessionStorage.urlappel =  datas.next;					
-			}	
-		 isLoading = false;		
-		 sessionStorage.recherche = false;
-	 });
-}
-
-function ajaxNews(categorieID){
-	root = "http://www.veille.univ-ap.info/news/";
-	isLoading = true;
-	//$("#loading").show();
-	// url = urlnews+'&format=jsonp';	
-	var url = sessionStorage.urlnews;
-	url = "";
-	if (categorieID==2){  //news	
-		$("#loading").show();
-		if((sessionStorage.urlnews =='null')){
-			sessionStorage.urlnews = "http://www.veille.univ-ap.info/news/api/?ordering=-date_debut&statut=Publié&categorie=" + categorieID + "&page=1"; 
-		}
-		url = sessionStorage.urlnews;
-	}
+		url = root+ "api/?ordering=-date_fin&statut=Publié&categorie=" + categorieID + "&page=1&page_size=50&categorie_dossier="+categorieDossier; 
 	
-	if (categorieID==5){
-		$("#loadingagenda").show();
-		if((sessionStorage.urlagenda =='null')){
-			sessionStorage.urlagenda = "http://www.veille.univ-ap.info/news/api/?ordering=-date_debut&statut=Publié&categorie=" + categorieID + "&page=1"; 
-		}
-		url = sessionStorage.urlagenda;
-	}
-	
-	if (categorieID==6){
-		$("#loadingappel").show();
-		if((sessionStorage.urlappel =='null')){
-			sessionStorage.urlappel = "http://www.veille.univ-ap.info/news/api/?ordering=-date_fin&statut=Publié&categorie=" + categorieID + "&page=1"; 
-			
-		}
-		url = sessionStorage.urlappel;
 	}
 	
 	var isRecherche = sessionStorage.recherche;
@@ -334,6 +307,11 @@ function ajaxNews(categorieID){
 				resultat+= '<li data-title="'+data[i].lien_vers_site+'"><a href="#"   data-ajax="false">'+' <h2>'+titre+'</h2><h2 class="pour_grand_ecran">'+data[i].titre+'</h2><p >'+data[i].date_debut.substring(8,10)+ '-' +data[i].date_debut.substring(5,7)+ '-' + +data[i].date_debut.substring(0,4)+ '</p></a> </li>';
 			}else if (categorieID==6){ //Appel d'offre
 				resultat+= '<li data-title="'+data[i].lien_vers_site+'"><a href="#"   data-ajax="false">'+' <h2>'+titre+'</h2><h2 class="pour_grand_ecran">'+data[i].titre+'</h2><p >Date limite : '+data[i].date_fin.substring(8,10)+ '-' +data[i].date_fin.substring(5,7)+ '-' + +data[i].date_fin.substring(0,4)+ '</p></a> </li>';
+			}else if (categorieID==7){ //dossier thematique
+				
+				//var datas={"contenuarticle":data[i].contenu};
+				
+				resultat+= '<li data-title ="'+data[i].id+'"><a href="#"   data-ajax="false">'+' <h2 class="pour_grand_ecran">'+data[i].titre+'</h2><p >'+extrait+'</p></a> </li>';
 			}
 	
 		}
@@ -364,11 +342,20 @@ function ajaxNews(categorieID){
 				$("#listappel").append(resultat).listview("refresh");
 				//$("#listappel").listview().listview("refresh");
 				sessionStorage.urlappel =  datas.next;				
+			}else if(categorieID==7){
+				$.mobile.changePage('#liste_article_dossier', "slide", true, true);
+				
+				//$("#loadingdossier").hide();
+				$("#ul_liste_article_dossier").html(resultat).listview("refresh");
+				
+				//$.mobile.initializePage();	
+				
+				$('body').find('#liste_article_dossier').page();
 			}	
 			
 		 }
 		 isLoading = false;		
-		 sessionStorage.recherche = false;
+		 sessionStorage.recherche = false; 
 	 });
 	
 }
@@ -383,6 +370,118 @@ function rechercher(){
 		sessionStorage.urlnews = 'http://www.veille.univ-ap.info/news/api/?ordering=-date_debut&statut=Publié&categorie=2';	
 	}
 	 sessionStorage.recherche = true;
-	 ajaxNews(2);
+	 ajaxNews(2,0);
+
+}
+function loadpdf(codesa,pays){
+	var url =  "http://outils.vn.auf.org/veille/api_pj/?systeme_academique="+codesa+"&format=jsonp";
+	
+	$.ajax({
+		type: 'GET',
+		dataType: "jsonp",
+		url: url,
+		timeout:30000 ,
+		crossDomain: true,
+		jsonp: 'callback', 
+		cache: false,
+		success: function (responseData, textStatus, jqXHR) {			
+			var racinePdf = 'http://www.veille.univ-ap.info/media/';
+			var data = responseData.results;
+			var listpdf ='';
+  			for(i=0;i<data.length;i++ ){
+				
+				listpdf += '<li data-ajax="false" data-title="'+racinePdf+data[i].fichier+'"><a href="#" > '+data[i].titre+' </a></li>';
+			}
+			$('#listpdf'+pays).html(listpdf).listview('refresh');	
+			
+
+		},
+		error: function (responseData, textStatus, errorThrown) {
+				
+			if(textStatus == 'timeout')
+			{     
+				alert('Vérifiez votre connexion internet'); 
+				//do something. Try again perhaps?
+			}
+		}
+		});
+	
+	
+	
+}
+function dossier_thematique(){
+	var url = racineSiteWeb+ "news/api_category_dossier/?format=jsonp";
+	
+	$.ajax({
+		type: 'GET',
+		dataType: "jsonp",
+		url: url,
+		timeout:30000 ,
+		crossDomain: true,
+		jsonp: 'callback', 
+		cache: false,
+		success: function (responseData, textStatus, jqXHR) {			
+			
+			var data = responseData.results;
+			var listcategorie ='';
+  			for(i=0;i<data.length;i++ ){
+				 listcategorie += '<li data-title="'+data[i].id+'"><a  href="#">'+data[i].titre+'</a></li>';
+			}
+			$('#listdossier').html(listcategorie).listview('refresh');	
+			
+
+		},
+		error: function (responseData, textStatus, errorThrown) {
+				
+			if(textStatus == 'timeout')
+			{     
+				alert('Vérifiez votre connexion internet'); 
+				//do something. Try again perhaps?
+			}
+		}
+		});
+}
+function load_article_thematique(idarticle){
+	
+	var url = racineSiteWeb + "news/api/?id="+idarticle;
+	$.ajax({
+		type: 'GET',
+		dataType: "jsonp",
+		url: url,
+		timeout:30000 ,
+		crossDomain: true,
+		jsonp: 'callback', 
+		cache: false,
+		success: function (responseData, textStatus, jqXHR) {			
+			var racinePdf = 'http://www.veille.univ-ap.info/media/';
+			var data = responseData.results;
+			var listpdf='';
+			
+  			$('#contenu_article_dossier').html(data[0].contenu);
+			// insertion des pdf
+			for(i=1; i<=10; i++){
+				var titre = 'titre_fichier'+i;
+				var fichier = 'fichier'+i;
+				if(data[0][fichier]!=''){
+				listpdf += '<li data-ajax="false" data-title="'+racinePdf+data[0][fichier]+'"><a href="#" > '+data[0][titre]+' </a></li>';
+				}
+			}
+			$.mobile.changePage('#details_article_dossier', "slideleft", true, true);
+			$('#listpdf_dossier').html(listpdf).listview('refresh');	
+			$('#listpdf_dossier').addClass(listpdf);
+			
+
+		},
+		error: function (responseData, textStatus, errorThrown) {
+				
+			if(textStatus == 'timeout')
+			{     
+				alert('Vérifiez votre connexion internet'); 
+				//do something. Try again perhaps?
+			}
+		}
+		});
+	//$('#contenue_details_article_dossier').append($(this).attr('data-title'));
+	//$.mobile.changePage('#details_article_dossier', "slideleft", true, true);
 
 }
