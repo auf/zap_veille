@@ -2,7 +2,7 @@
 <widget xmlns = "http://www.w3.org/ns/widgets"
     xmlns:gap = "http://phonegap.com/ns/1.0"
     id        = "com.auf.veille"
-    version   = "1.0.5">
+    version   = "1.0.6">
 
 <name>Veille AP</name>
 
@@ -11,7 +11,7 @@ L'environnement académique dans la région Asie-Pacifique évolue, se développ
 L' « Espace veille académique » proposé par l'Agence universitaire de la Francophonie et ses membres, est un outil d'information sur l'évolution des pratiques professionnelles dans l'enseignement supérieur, la recherche et les contextes académiques et institutionnels en Asie-Pacifique.
 </description>
 
-<author href="www.auf.org" email="gorbiromaric@gmail.com">
+<author href="www.auf.org" email="technique@vn.auf.org">
 Bureau Asie Pacifique de l'Agence Universitaire de la Francophonie
 </author>
 <icon src="veille_logo.png" />
