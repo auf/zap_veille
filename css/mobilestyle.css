@@ -2,10 +2,7 @@ fieldset{
  
 }
 
-.ios-detected  {
-height:25px;
-display:block;
-}
+
 
 .scroll-wrapper {
 	-webkit-overflow-scrolling: touch !important;
@@ -17,7 +14,10 @@ display:block;
   height: 100%;
   width: 100%;
 }
-
+.ios-detected  {
+height:25px;
+display:block;
+}
 .ios-detected .ui-header .ui-btn {
 top:30px !important;
 position: relative !important;
@@ -34,6 +34,9 @@ position: relative !important;
 	height:40px;
 	background-position: 88% ; 
 	
+}
+.paddingleft{
+	padding-left:33px;
 }
 .ui-page > h1,.ui-page h1.entete{
 	

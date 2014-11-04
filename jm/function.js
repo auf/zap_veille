@@ -8,6 +8,11 @@ $(function() {
 	
 	racine ="http://www.veille.univ-ap.info/media/";
 	racineSiteWeb = "http://www.veille.univ-ap.info/";
+	var currentDate = new Date();
+	var day = currentDate.getDate();
+	var month = currentDate.getMonth() + 1;
+	var year = currentDate.getFullYear();
+	current_date = year + "-" + month + "-" + day;
 	
 	if(typeof(Storage) !== "undefined") {
    		 if(typeof(sessionStorage.recherche) == "undefined"){
@@ -24,7 +29,7 @@ $(function() {
 		 }
 		 
 		if(typeof(sessionStorage.urlappel) == "undefined" || (sessionStorage.urlappel == 'null') ){
-		 	sessionStorage.urlappel = "http://www.veille.univ-ap.info/news/api/?categorie=6&page=1&statut=Publié&ordering=-date_fin";
+		 	sessionStorage.urlappel = "http://www.veille.univ-ap.info/news/api/?categorie=6&page=1&date_fin_gte="+current_date+"&ordering=-date_fin";
 		 }
 		 /*if(typeof(sessionStorage.urldossier) == "undefined" || (sessionStorage.urldossier == 'null') ){
 		 	sessionStorage.urldossier = "http://www.veille.univ-ap.info/news/api/?categorie=7&page=1&statut=Publié&ordering=-date_fin";
@@ -42,10 +47,12 @@ $(function() {
 	// code insertion entete, bouton légale et logo
 	if (navigator.appVersion.indexOf("Mac OS")!=-1){
 		$('.headerpage').find('a').remove();
-		$('[data-role="header"]').prepend('<div style="background-color: #ababab;top:0px;" id="transparent_header" class="ios-detected">   &nbsp;</div>	<a href="#menuapp" data-icon="grid" data-rel="popup" class="ui-btn-right ui-btn ui-icon-grid  ui-corner-all ui-btn-icon-notext" data-iconpos="right" data-transition="pop" style="position:absolute;top:30px"></a><div id=""><div class="logo"><img src="images/logo.png" />	</div></div> ');			
-		$('.headerpage').append('<a style="position:absolute;top:30px" id="btn-back" data-role="button" data-rel="back" data-transition="slide" data-icon="arrow-l" data-iconpos="left" class="ui-btn-left ui-btn ui-icon-arrow-l  ui-corner-all ui-btn-icon-notext"  > Retour </a>');
+		$('[data-role="header"]').prepend('<div style="background-color: #ababab;top:0px;" id="transparent_header" class="ios-detected">   &nbsp;</div>	<a href="#menuapp" data-icon="grid" data-rel="popup" class="ui-btn-right ui-btn ui-icon-grid  ui-corner-all ui-btn-icon-notext" data-iconpos="right" data-transition="pop" style="position:absolute;top:30px"></a><div class="logo paddingleft"><img src="images/logo.png" />	</div> ');			
+		$('.headerpage').append('<a style="position:absolute;top:30px"  data-role="button" data-rel="back" data-transition="slide" data-icon="arrow-l" data-iconpos="left" class="ui-btn-left ui-btn ui-icon-arrow-l  ui-corner-all ui-btn-icon-notext"  > Retour </a>');
+		$('#headerindex .logo').removeClass('paddingleft');
 	}else{
-		$('[data-role="header"]').prepend('<a href="#menuapp" data-icon="grid" style="margin-right:10px;" data-rel="popup" class="ui-btn-right ui-btn ui-icon-grid  ui-corner-all ui-btn-icon-notext" data-iconpos="right" data-transition="pop" ></a><div id=""><div class="logo"><img src="images/logo.png" />	</div></div> ');
+		$('[data-role="header"]').prepend('<a href="#menuapp" data-icon="grid" style="margin-right:10px;" data-rel="popup" class="ui-btn-right ui-btn ui-icon-grid  ui-corner-all ui-btn-icon-notext" data-iconpos="right" data-transition="pop" ></a><div id=""><div class="logo paddingleft"><img src="images/logo.png" />	</div></div> ');
+		$('#headerindex .logo').removeClass('paddingleft');
 	}
 	
 	
@@ -116,12 +123,14 @@ $(function() {
 		//alert(theframe);
 		$("#pdf_contenu").html(theframe);
 		$.mobile.initializePage();		
-		$.mobile.changePage('#pdfview', "slide", true, true);
+		$.mobile.changePage('#pdfview', "up", true, true);
+
+		
 		$("#framepdf").load(function() {
 			$(this).height( viewport.height );
 		});
 		$('body').find('#pdfview').page();
-				
+		
     });  
    $(document).on('tap','#listnews li', function () {
            
@@ -172,6 +181,7 @@ $(function() {
 		$('body').find('#details').page();
 						
     });
+    
 	$(document).on('tap','#listdossier li ', function () {
        
 		$('#liste_article_dossier').find('h1').html($(this).find('a').html());   
@@ -179,6 +189,7 @@ $(function() {
 		
 						
     }); 
+    
 	$(document).on('tap','#ul_liste_article_dossier li ', function () {
         
 		$('#header_details_article_dossier').find('h1').html($(this).find('h2').html());      
@@ -246,12 +257,13 @@ function ajaxSA(){
 function ajaxNews(categorieID,categorieDossier){
 	var root = "http://www.veille.univ-ap.info/news/";
 	isLoading = true;
-	//$("#loading").show();
-	// url = urlnews+'&format=jsonp';	
+
 	
-	//sessionStorage.urlnews = 'null';
-	
-	
+	var currentDate = new Date();
+	var day = currentDate.getDate();
+	var month = currentDate.getMonth() + 1;
+	var year = currentDate.getFullYear();
+	current_date = year + "-" + month + "-" + day;	
 	
 	if (categorieID==2){  //news	
 		$("#loading").show();
@@ -261,7 +273,7 @@ function ajaxNews(categorieID,categorieDossier){
 		url = sessionStorage.urlnews;
 	}
 	
-	if (categorieID==5){
+	if (categorieID==5){ //agenda
 		$("#loadingagenda").show();
 		if((sessionStorage.urlagenda =='null')){
 			sessionStorage.urlagenda = root+"api/?ordering=-date_debut&statut=Publié&categorie=" + categorieID + "&page=1"; 
@@ -269,10 +281,10 @@ function ajaxNews(categorieID,categorieDossier){
 		url = sessionStorage.urlagenda;
 	}
 	
-	if (categorieID==6){
+	if (categorieID==6){ // appel d'offre
 		$("#loadingappel").show();
 		if((sessionStorage.urlappel =='null')){
-			sessionStorage.urlappel = root+ "api/?ordering=-date_fin&statut=Publié&categorie=" + categorieID + "&page=1"; 
+			sessionStorage.urlappel = root+ "api/?ordering=-date_fin&statut=Publié&categorie=" + categorieID + "&date_fin_gte="+current_date+"&page=1"; 
 			
 		}
 		url = sessionStorage.urlappel;
