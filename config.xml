@@ -20,6 +20,6 @@ Bureau Asie Pacifique de l'Agence Universitaire de la Francophonie
 <gap:splash src="demarrage_portrait.png" gap:platform="android" gap:qualifier="port-xxhdpi" />
 <gap:splash src="demarrage_paysage.png" gap:platform="android" gap:qualifier="land-xxhdpi" />
 <gap:splash src="demarrage_paysage.jpg" gap:platform="winphone" />
-<gap:splash src="demarrage_portrait_iphone.png" gap:platform="ios" width="320" height="480" />
+<gap:splash src="demarrage_portrait.png" gap:platform="ios" />
 <access origin="*" />
 </widget>
