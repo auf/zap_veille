@@ -1,9 +1,6 @@
  
 $(function() {
-	/*$('.pdfview').each (function(i) {
-    $(this)
-    $(this).replaceWith('<h2><a href="'+$(this).attr('href')+'">'+$(this).text()+'</a></h2><iframe src="http://docs.google.com/viewer?url='+$(this).attr('href')+'&#038;embedded=true" width="500" height="250" style="border: none;"></iframe>');
-});*/
+
 	$( "#menuapp" ).enhanceWithin().popup();
 	
 	
@@ -32,16 +29,7 @@ $(function() {
 		if(typeof(sessionStorage.urlappel) == "undefined" || (sessionStorage.urlappel == 'null') ){
 		 	sessionStorage.urlappel = "http://www.veille.univ-ap.info/news/api/?categorie=6&page=1&date_fin_gte="+current_date+"&ordering=-date_fin";
 		 }
-		 /*if(typeof(sessionStorage.urldossier) == "undefined" || (sessionStorage.urldossier == 'null') ){
-		 	sessionStorage.urldossier = "http://www.veille.univ-ap.info/news/api/?categorie=7&page=1&statut=Publié&ordering=-date_fin";
-		 }	*/
-	 
-	 
-		 
-		/* if(typeof(localStorage.premierefois)=="undefined"){
-		 	localStorage.premierefois = true;
-			document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block';
-		 }*/
+
 	} else {
    		 alert('Votre navigateur ne supporte pas les coockies');
 	}
@@ -58,12 +46,12 @@ $(function() {
 	
 	
 	// code insertion popup
-	//$('[data-role="page"]').prepend(legal).page();
+
 	$(document).on("scrollstop",function(){
 		page = $.mobile.activePage.attr("id");
-		//alert(page);
+
 		if (page == "agenda"){
-			//alert($(document).scrollTop() + " " + $(document).height() + " " + $('#agenda').height());
+
 			if ( $(window).scrollTop() + $(window).height() > $('#agenda').height() - 180 && !isLoading) {
 			   //alert("go 11");
 			   if(sessionStorage.urlagenda!='null'){
@@ -73,8 +61,6 @@ $(function() {
 			   }
 			}		
 		}else 	if (page == "appel"){
-			//alert($(window).scrollTop() + " " + $(window).height() + " " + $('#appel').height());
-			//alert(typeof(sessionStorage.urlagenda) + " " + sessionStorage.urlagenda);
 			if ($(window).scrollTop() + $(window).height() > $('#appel').height() - 180 && !isLoading) {
 				//alert("go 11");
 			   if(sessionStorage.urlappel!='null'){
@@ -84,7 +70,6 @@ $(function() {
 			   }
 			}		
 		} else 	if (page == "index"){
-			//alert($('#news').height() + ' - ' + $(window).scrollTop() + ' - ' +  $(window).height());
 			if ($(window).scrollTop() + $(window).height() > $('#news').height() - 100 && !isLoading ) {
 			
 			  	sessionStorage.recherche = false;
@@ -92,8 +77,7 @@ $(function() {
 			   if(sessionStorage.urlnews!='null'){
 				ajaxNews(2,0); //get News
 			   }else{
-				   
-				//$('#loading').html('<h2 >Aucune données à télécharger</h2>');
+
 			   }
 			}		
 		}
@@ -120,8 +104,7 @@ $(function() {
 		
 		frame ='<div class="scroll-wrapper"><IFRAME id="framepdf" src="http://docs.google.com/gview?url='+pdf+'" width="100%"  scrolling=auto frameborder=0 > </IFRAME></div>';
 		theframe = $(frame);
-		//theframe.appendTo($("#contenusite"));		
-		//alert(theframe);
+
 		$("#pdf_contenu").html(theframe);
 		$.mobile.initializePage();		
 		$.mobile.changePage('#pdfview', "up", true, true);
@@ -138,7 +121,7 @@ $(function() {
 		siteweb = $(this).attr('data-title');
 		var frame ='<div class="scroll-wrapper"><IFRAME id="frameId" src="'+siteweb+'" width="100%"  scrolling=auto frameborder=1 > </IFRAME></div>';
 		var theframe = $(frame);
-		//theframe.appendTo($("#contenusite"));		
+	
 		$("#contenusite").html(theframe);
 		$.mobile.initializePage();		
 		$.mobile.changePage('#details', "up", true, true);
@@ -154,13 +137,12 @@ $(function() {
 		siteweb = $(this).attr('data-title');
 		var frame ='<div class="scroll-wrapper"><IFRAME id="frameId" src="'+siteweb+'" width="300"  scrolling=auto frameborder=1 > </IFRAME></div>';
 		var theframe = $(frame);
-		//theframe.appendTo($("#contenusite"));		
+	
 		$("#contenusite").html(theframe);
 		$.mobile.initializePage();		
 		$.mobile.changePage('#details', "up", true, true);
 		$("#frameId").load(function() {
 			$(this).height( viewport.height );
-			//$(this).width( viewport.width );
 		});
 		$('body').find('#details').page();
 						
@@ -172,7 +154,7 @@ $(function() {
 		siteweb = $(this).attr('data-title');
 		var frame ='<div class="scroll-wrapper"><IFRAME id="frameId" src="'+siteweb+'" width="100%"  scrolling=auto frameborder=1 > </IFRAME></div>';
 		var theframe = $(frame);
-		//theframe.appendTo($("#contenusite"));		
+	
 		$("#contenusite").html(theframe);
 		$.mobile.initializePage();		
 		$.mobile.changePage('#details', "up", true, true);
@@ -184,7 +166,17 @@ $(function() {
     });
     
 	$(document).on('tap','#listdossier li ', function () {
-       
+	
+		// eviter on-click event declancher 2 fois
+	        $('#ul_liste_article_dossier li ').css('pointer-events', 'none');
+		$('#ul_liste_article_dossier ').css('pointer-events', 'none');
+  
+		setTimeout(function(){
+			$('#ul_liste_article_dossier ').css('pointer-events', 'auto');}, 500);
+			
+		setTimeout(function(){
+			$('#ul_liste_article_dossier li ').css('pointer-events', 'auto');}, 500);
+			
 		$('#liste_article_dossier').find('h1').html($(this).find('a').html());   
 		ajaxNews(7,$(this).attr('data-title')); 
 		
@@ -192,24 +184,11 @@ $(function() {
     }); 
     
 	$(document).on('tap','#ul_liste_article_dossier li ', function () {
-        
 		$('#header_details_article_dossier').find('h1').html($(this).find('h2').html());      
 		load_article_thematique($(this).attr('data-title'));
 				
     });       
-    
-    /*
-   $(document).on('tap','.test1 li', function () {
-           	if(sessionStorage.urlnews =='null'){
-				sessionStorage.recherche = true; 
-			}
-			ajaxNews(2);
-			ajaxSA();
-		
-        });   
- $('#enregistrer_repertoire').bind( "tap", add_membre );	
-  */
-	
+
 });
 
 function ajaxSA(){
@@ -247,7 +226,6 @@ function ajaxSA(){
 			if(textStatus == 'timeout')
 			{     
 				alert('Vérifiez votre connexion internet'); 
-				//do something. Try again perhaps?
 			}
 		}
 		});
@@ -291,8 +269,7 @@ function ajaxNews(categorieID,categorieDossier){
 		url = sessionStorage.urlappel;
 	}
 	if (categorieID==7){
-		//$("#loadingappel").show();
-		
+
 		url = root+ "api/?ordering=-date_fin&statut=Publié&categorie=" + categorieID + "&page=1&page_size=50&categorie_dossier="+categorieDossier; 
 	
 	}
@@ -321,23 +298,19 @@ function ajaxNews(categorieID,categorieDossier){
 			}else if (categorieID==6){ //Appel d'offre
 				resultat+= '<li data-title="'+data[i].lien_vers_site+'"><a href="#"   data-ajax="false">'+' <h2>'+titre+'</h2><h2 class="pour_grand_ecran">'+data[i].titre+'</h2><p >Date limite : '+data[i].date_fin.substring(8,10)+ '-' +data[i].date_fin.substring(5,7)+ '-' + +data[i].date_fin.substring(0,4)+ '</p></a> </li>';
 			}else if (categorieID==7){ //dossier thematique
-				
 				//var datas={"contenuarticle":data[i].contenu};
-				
 				resultat+= '<li data-title ="'+data[i].id+'"><a href="#"   data-ajax="false">'+' <h2 class="pour_grand_ecran">'+data[i].titre+'</h2><p >'+extrait+'</p></a> </li>';
 			}
 	
 		}
 		
-		//$("#loading").hide();
-		
+	
 		 if(isRecherche=='true' && categorieID==2){
 			
-		//	$("#listnews").html(resultat).addClass('listnews');
 			$("#listnews").html(resultat).listview();
 			$("#loading").hide();
 		 }else{
-		 	// $("#listnews").append(resultat).addClass('listnews');
+
 			if (categorieID==2){
 				$("#loading").hide();
 				sessionStorage.urlnews =  datas.next;
@@ -346,22 +319,14 @@ function ajaxNews(categorieID,categorieDossier){
 			}else if (categorieID==5){
 				$("#loadingagenda").hide();
 				$("#listagenda").append(resultat).listview("refresh");
-				//$("#listagenda").append(resultat).listview();
 				sessionStorage.urlagenda =  datas.next;				
 			}else if (categorieID==6){
 				$("#loadingappel").hide();
-				
-				//$("#listappel").append(resultat).addClass('listappel');
 				$("#listappel").append(resultat).listview("refresh");
-				//$("#listappel").listview().listview("refresh");
 				sessionStorage.urlappel =  datas.next;				
 			}else if(categorieID==7){
 				$.mobile.changePage('#liste_article_dossier', "slide", true, true);
-				
-				//$("#loadingdossier").hide();
 				$("#ul_liste_article_dossier").html(resultat).listview("refresh");
-				
-				//$.mobile.initializePage();	
 				
 				$('body').find('#liste_article_dossier').page();
 			}	
@@ -414,7 +379,6 @@ function loadpdf(codesa,pays){
 			if(textStatus == 'timeout')
 			{     
 				alert('Vérifiez votre connexion internet'); 
-				//do something. Try again perhaps?
 			}
 		}
 		});
@@ -449,7 +413,6 @@ function dossier_thematique(){
 			if(textStatus == 'timeout')
 			{     
 				alert('Vérifiez votre connexion internet'); 
-				//do something. Try again perhaps?
 			}
 		}
 		});
@@ -490,11 +453,9 @@ function load_article_thematique(idarticle){
 			if(textStatus == 'timeout')
 			{     
 				alert('Vérifiez votre connexion internet'); 
-				//do something. Try again perhaps?
 			}
 		}
 		});
-	//$('#contenue_details_article_dossier').append($(this).attr('data-title'));
-	//$.mobile.changePage('#details_article_dossier', "slideleft", true, true);
+
 
 }

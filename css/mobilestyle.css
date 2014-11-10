@@ -131,7 +131,7 @@ ul.listnews li a img,ul.listnews li a div {
 }
 
 ul.listnews li a h2{
-	font-size:13px;
+	font-size:16px;
 	font-weight:bold;
 	padding-top:5px;
 	text-shadow: none;
@@ -160,7 +160,7 @@ ul.listagenda li a p{
 	
 	list-style:none;
 	white-space:normal;	
-	font-size:12px;	
+	font-size:14px;	
 	color:#000;
 	font-weight:normal;
 	font-family:"Times New Roman", Times, serif;
@@ -169,19 +169,54 @@ ul.listagenda li a p{
 }
 
 ul.listagenda  h2{
-	font-size:12px;
+	font-size:16px;
 	font-weight:bold;
 	padding-top:5px;
 	text-shadow: none;
 	white-space:normal;
 	color:#0093dd;
 }
+
 ul.listappel li {
 	padding:3px;
 	margin:3px;
 }
 ul.listappel li a p{
 	
+	list-style:none;
+	white-space:normal;
+	
+	font-size:14px;
+	color:#000000;
+	
+	font-weight:normal;
+	font-family:"Times New Roman", Times, serif;
+	text-shadow: none;
+		
+}
+
+ul.listappel  h2{
+	font-size:16px;
+	font-weight:bold;
+	padding-top:5px;
+	text-shadow: none;
+	white-space:normal;
+	color:#0093dd;
+}
+
+ul.listappel li a{
+	text-decoration:none;
+	font-weight:normal;
+}
+
+
+
+ul.listdossier li {
+	padding:3px;
+	margin:3px;
+}
+
+ul.listdossier li a p{
 	list-style:none;
 	white-space:normal;
 	
@@ -194,7 +229,7 @@ ul.listappel li a p{
 		
 }
 
-ul.listappel  h2{
+ul.listdossier  li h2{
 	font-size:12px;
 	font-weight:bold;
 	padding-top:5px;
@@ -203,11 +238,18 @@ ul.listappel  h2{
 	color:#0093dd;
 }
 
-ul.listappel li a{
+ul.listdossier  li a h2{
+	font-size:12px;
+	font-weight:bold;
+	padding-top:5px;
+	text-shadow: none;
+	white-space:normal;
+	color:#0093dd;
+}
+
+ul.listdossier li a{
 	text-decoration:none;
 	font-weight:normal;
-	
-	
 }
 
 #loading h3{
