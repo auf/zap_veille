@@ -98,7 +98,7 @@ $(function() {
 	dossier_thematique();
 	ajaxSA();
 	
-	 $(document).on('tap','.listpdf li', function () {
+	$(document).on('tap','.listpdf li', function () {
         
 		pdf = $(this).attr('data-title')+'&embedded=true';
 		
@@ -115,8 +115,9 @@ $(function() {
 		});
 		$('body').find('#pdfview').page();
 		
-    });  
-   $(document).on('tap','#listnews li', function () {
+	});  
+	
+	$(document).on('tap','#listnews li', function () {
            
 		siteweb = $(this).attr('data-title');
 		var frame ='<div class="scroll-wrapper"><IFRAME id="frameId" src="'+siteweb+'" width="100%"  scrolling=auto frameborder=1 > </IFRAME></div>';
@@ -130,9 +131,9 @@ $(function() {
 		});
 		$('body').find('#details').page();
 						
-    });   
+	});   
     
-      $(document).on('tap','#listagenda li ', function () {
+	$(document).on('tap','#listagenda li ', function () {
            
 		siteweb = $(this).attr('data-title');
 		var frame ='<div class="scroll-wrapper"><IFRAME id="frameId" src="'+siteweb+'" width="300"  scrolling=auto frameborder=1 > </IFRAME></div>';
@@ -146,10 +147,10 @@ $(function() {
 		});
 		$('body').find('#details').page();
 						
-    });   
+	});   
     
 	
-    $(document).on('tap','#listappel li ', function () {
+	$(document).on('tap','#listappel li ', function () {
            
 		siteweb = $(this).attr('data-title');
 		var frame ='<div class="scroll-wrapper"><IFRAME id="frameId" src="'+siteweb+'" width="100%"  scrolling=auto frameborder=1 > </IFRAME></div>';
@@ -163,7 +164,7 @@ $(function() {
 		});
 		$('body').find('#details').page();
 						
-    });
+	});
     
 	$(document).on('tap','#listdossier li ', function () {
 	
@@ -181,9 +182,15 @@ $(function() {
 		ajaxNews(7,$(this).attr('data-title')); 
 		
 						
-    }); 
+	}); 
     
 	$(document).on('tap','#ul_liste_article_dossier li ', function () {
+		// eviter on-click event declancher 2 fois et sur la page suivant
+	        $('#contenue_details_article_dossier ').css('pointer-events', 'none');
+
+		setTimeout(function(){
+			$('#contenue_details_article_dossier ').css('pointer-events', 'auto');}, 500);		
+		
 		$('#header_details_article_dossier').find('h1').html($(this).find('h2').html());      
 		load_article_thematique($(this).attr('data-title'));
 				
