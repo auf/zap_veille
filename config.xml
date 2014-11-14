@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <widget xmlns = "http://www.w3.org/ns/widgets"
     xmlns:gap = "http://phonegap.com/ns/1.0"
-    id        = "org.auf.veilleap"
+    id        = "org.auf.*"
     version   = "1.0.6">
 
 <name>Veille AP</name>
@@ -22,15 +22,6 @@ Bureau Asie Pacifique de l'Agence Universitaire de la Francophonie
 <gap:splash src="demarrage_paysage.jpg" gap:platform="winphone" />
 <gap:splash src="demarrage_portrait.png" gap:platform="ios" />
 <access origin="*" />
-
-
-<platform name="ios">
-<!-- iPad -->
-     <icon src="icon-72.png" width="72" height="72" />
-<!-- iphone -->
-     <icon src="icon-57.png" width="57" height="57" />
-
- </platform>
 
 </widget>
 
