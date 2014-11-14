@@ -22,7 +22,6 @@ Bureau Asie Pacifique de l'Agence Universitaire de la Francophonie
 <gap:splash src="demarrage_paysage.jpg" gap:platform="winphone" />
 <gap:splash src="demarrage_portrait.png" gap:platform="ios" />
 <access origin="*" />
-</widget>
 
 
 <platform name="ios">
@@ -32,3 +31,6 @@ Bureau Asie Pacifique de l'Agence Universitaire de la Francophonie
      <icon src="icon-57.png" width="57" height="57" />
 
  </platform>
+
+</widget>
+
