@@ -14,13 +14,17 @@ L' « Espace veille académique » proposé par l'Agence universitaire de la Fra
 <author href="www.auf.org" email="technique@vn.auf.org">
 Bureau Asie Pacifique de l'Agence Universitaire de la Francophonie
 </author>
+
+<icon src="Icon-57.png" width="57" height="57" gap:platform="ios" />
+<icon src="Icon-72.png" width="72" height="72" gap:platform="ios" />
+
 <icon src="veille_logo.png" />
 <icon src="veille_logo.png" gap:platform="android" gap:qualifier="ldpi" />
+<gap:splash src="demarrage_portrait.png" gap:platform="ios" />
 <gap:splash src="demarrage_portrait.png" />
 <gap:splash src="demarrage_portrait.png" gap:platform="android" gap:qualifier="port-xxhdpi" />
 <gap:splash src="demarrage_paysage.png" gap:platform="android" gap:qualifier="land-xxhdpi" />
 <gap:splash src="demarrage_paysage.jpg" gap:platform="winphone" />
-<gap:splash src="demarrage_portrait.png" gap:platform="ios" />
 <access origin="*" />
 
 
