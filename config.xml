@@ -17,11 +17,11 @@ Bureau Asie Pacifique de l'Agence Universitaire de la Francophonie
 
 <icon src="Icon-57.png" width="57" height="57" gap:platform="ios" />
 <icon src="Icon-72.png" width="72" height="72" gap:platform="ios" />
+<gap:splash src="demarrage_portrait.png" gap:platform="ios" />
+<gap:splash src="iphone-demarrage-portrait-568h.png" width="320" height="480" gap:platform="ios" />
 
 <icon src="veille_logo.png" />
 <icon src="veille_logo.png" gap:platform="android" gap:qualifier="ldpi" />
-<gap:splash src="demarrage_portrait.png" gap:platform="ios" />
-<gap:splash src="iphone_demarrage_portrait-568h-2x.png" width="320" height="480" gap:platform="ios" />
 <gap:splash src="demarrage_portrait.png" />
 <gap:splash src="demarrage_portrait.png" gap:platform="android" gap:qualifier="port-xxhdpi" />
 <gap:splash src="demarrage_paysage.png" gap:platform="android" gap:qualifier="land-xxhdpi" />
