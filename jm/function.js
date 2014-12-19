@@ -36,11 +36,11 @@ $(function() {
 	// code insertion entete, bouton légale et logo
 	if (navigator.appVersion.indexOf("Mac OS")!=-1){
 		$('.headerpage').find('a').remove();
-		$('[data-role="header"]').prepend('<div style="background-color: #ababab;top:0px;" id="transparent_header" class="ios-detected">   &nbsp;</div>	<a href="#menuapp" data-icon="grid" data-rel="popup" class="ui-btn ui-btn-icon-left ui-corner-all ui-btn-right ui-icon-grid" data-iconpos="right" data-transition="pop" style="position:absolute;top:30px">Menu</a><div class="logo paddingleft"><img src="images/logo.png" />	</div> ');			
+		$('[data-role="header"]').prepend('<div style="background-color: #ababab;top:0px;" id="transparent_header" class="ios-detected">   &nbsp;</div>	<a href="#menuapp" data-icon="grid" data-rel="popup" class="ui-btn-right ui-btn ui-icon-grid  ui-corner-all ui-btn-icon-notext" data-iconpos="right" data-transition="pop" style="position:absolute;top:30px"></a><div class="logo paddingleft"><img src="images/logo.png" />	</div> ');			
 		$('.headerpage').append('<a style="position:absolute;top:30px"  data-role="button" data-rel="back" data-transition="slide" data-icon="arrow-l" data-iconpos="left" class="ui-btn-left ui-btn ui-icon-arrow-l  ui-corner-all ui-btn-icon-notext"  > Retour </a>');
 		$('#headerindex .logo').removeClass('paddingleft');
 	}else{
-		$('[data-role="header"]').prepend('<a href="#menuapp" data-icon="grid" style="margin-right:10px;" data-rel="popup" class="ui-btn ui-btn-icon-left ui-corner-all ui-btn-right ui-icon-grid" data-iconpos="right" data-transition="pop" >Menu</a><div id=""><div class="logo paddingleft"><img src="images/logo.png" />	</div></div> ');
+		$('[data-role="header"]').prepend('<a href="#menuapp" data-icon="grid" style="margin-right:10px;" data-rel="popup" class="ui-btn-right ui-btn ui-icon-grid  ui-corner-all ui-btn-icon-notext" data-iconpos="right" data-transition="pop" ></a><div id=""><div class="logo paddingleft"><img src="images/logo.png" />	</div></div> ');
 		$('#headerindex .logo').removeClass('paddingleft');
 	}
 	
@@ -306,7 +306,7 @@ function ajaxNews(categorieID,categorieDossier){
 				resultat+= '<li data-title="'+data[i].lien_vers_site+'"><a href="#"   data-ajax="false">'+' <h2>'+titre+'</h2><h2 class="pour_grand_ecran">'+data[i].titre+'</h2><p >Date limite : '+data[i].date_fin.substring(8,10)+ '-' +data[i].date_fin.substring(5,7)+ '-' + +data[i].date_fin.substring(0,4)+ '</p></a> </li>';
 			}else if (categorieID==7){ //dossier thematique
 				//var datas={"contenuarticle":data[i].contenu};
-				resultat+= '<li data-title ="'+data[i].id+'"><a href="#"   data-ajax="false">'+' <h2 class="pour_grand_ecran">'+data[i].titre+'</h2><p >'+extrait+'</p></a> </li>';
+				resultat+= '<li data-title ="'+data[i].id+'"><a href="#"   data-ajax="false">'+' <h2>'+data[i].titre+'</h2> <h2 class="pour_grand_ecran">'+data[i].titre+'</h2><p >'+extrait+'</p></a> </li>';
 			}
 	
 		}
@@ -409,7 +409,7 @@ function dossier_thematique(){
 			var data = responseData.results;
 			var listcategorie ='';
   			for(i=0;i<data.length;i++ ){
-				 listcategorie += '<li data-title="'+data[i].id+'"><a  href="#">'+data[i].titre+'</a></li>';
+				 listcategorie += '<li data-title="'+data[i].id+'"><a  href="#">'+'<h2>'+data[i].titre+'</h2>' +'<h2  class="pour_grand_ecran">'+data[i].titre+'</h2> </a></li>';
 			}
 			$('#listdossier').html(listcategorie).listview('refresh');	
 			
