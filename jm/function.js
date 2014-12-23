@@ -38,10 +38,26 @@ $(function() {
 		$('.headerpage').find('a').remove();
 		$('[data-role="header"]').prepend('<div style="background-color: #ababab;top:0px;" id="transparent_header" class="ios-detected">   &nbsp;</div>	<a href="#menuapp" data-icon="grid" data-rel="popup" class="ui-btn-right ui-btn ui-icon-grid  ui-corner-all ui-btn-icon-notext" data-iconpos="right" data-transition="pop" style="position:absolute;top:30px"></a><div class="logo paddingleft"><img src="images/logo.png" />	</div> ');			
 		$('.headerpage').append('<a style="position:absolute;top:30px"  data-role="button" data-rel="back" data-transition="slide" data-icon="arrow-l" data-iconpos="left" class="ui-btn-left ui-btn ui-icon-arrow-l  ui-corner-all ui-btn-icon-notext"  > Retour </a>');
-		$('#headerindex .logo').removeClass('paddingleft');
+		// mettre le logo a gauche.
+		$('#apps-header .logo').removeClass('paddingleft');
+		$('#headeragenda .logo').removeClass('paddingleft');
+		$('#headerrepertoire .logo').removeClass('paddingleft');
+		$('#headersystemevietnam .logo').removeClass('paddingleft');
+		$('#headersystemecambodge .logo').removeClass('paddingleft');
+		$('#headersystemelaos .logo').removeClass('paddingleft');
+		$('#headersystemevanuatu .logo').removeClass('paddingleft');
+		$('#headerdossier .logo').removeClass('paddingleft');
+		
 	}else{
 		$('[data-role="header"]').prepend('<a href="#menuapp" data-icon="grid" style="margin-right:10px;" data-rel="popup" class="ui-btn-right ui-btn ui-icon-grid  ui-corner-all ui-btn-icon-notext" data-iconpos="right" data-transition="pop" ></a><div id=""><div class="logo paddingleft"><img src="images/logo.png" />	</div></div> ');
-		$('#headerindex .logo').removeClass('paddingleft');
+		$('#apps-header .logo').removeClass('paddingleft');
+		$('#headeragenda .logo').removeClass('paddingleft');
+		$('#headerrepertoire .logo').removeClass('paddingleft');
+		$('#headersystemevietnam .logo').removeClass('paddingleft');
+		$('#headersystemecambodge .logo').removeClass('paddingleft');
+		$('#headersystemelaos .logo').removeClass('paddingleft');
+		$('#headersystemevanuatu .logo').removeClass('paddingleft');	
+		$('#headerdossier .logo').removeClass('paddingleft');		
 	}
 	
 	
